@@ -66,7 +66,7 @@ export default function Portfolio() {
     {
       title: "2048 Game By Zuitt!",
       description:
-        "A free JavaScript mini-game workshop project featuring animations, responsive design, and modern game mechanics. Built with vanilla JavaScript and CSS5.",
+        "A free JavaScript mini-game workshop project featuring animations, responsive design, and modern game mechanics. Built with vanilla JavaScript and CSS3.",
       image: "/Images/2048zuitt.png",
       preview: "https://marklaroya.github.io/Laroya-js-2048-fcb/", // Link to live demo
       code: "https://github.com/marklaroya/Laroya-js-2048-fcb", // Link to source code
