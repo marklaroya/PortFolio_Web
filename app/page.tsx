@@ -70,7 +70,7 @@ export default function Portfolio() {
       image: "/Images/2048zuitt.png",
       preview: "https://marklaroya.github.io/Laroya-js-2048-fcb/", // Link to live demo
       code: "https://github.com/marklaroya/Laroya-js-2048-fcb", // Link to source code
-      tech: ["JavaScript", "CSS5", "HTML5"],
+      tech: ["JavaScript", "CSS3", "HTML5"],
       status: "Completed",
     },
     {
