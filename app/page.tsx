@@ -339,7 +339,7 @@ export default function Portfolio() {
               >
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   
-                  <Button onClick={() => window.open("assets/Mark_Lester_Laroya_Software_Developer_Resume.pdf", "_blank")} size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-8">
+                  <Button onClick={() => window.open("assets/Laroya_MarkLester_RESUME.pdf", "_blank")} size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-8">
                     <Download className="w-5 h-5 mr-2" />
                     Download CV
                   </Button>
