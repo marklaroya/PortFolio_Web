@@ -92,6 +92,24 @@ export default function Portfolio() {
       tech: ["Java", "MySQL",],
       status: "Completed",
     },
+    {
+      title: "Simple Blog-App",
+      description:
+        "A simple full-stack web application Features authentication, protected routes, and CRUD operations.",
+      image: "/Images/SimpleFullStack_Crud.png",
+      code: "https://github.com/marklaroya/FullStack-Blog-App",
+      tech: ["React", "Node.js", "Express", "MongoDB",],
+      status: "Completed",
+    },
+    {
+      title: "BackUp File App",
+      description:
+        "Self-hosted backup web application deployed on My Ubuntu home server, enabling multiple file uploads and HTTP-based file access.",
+      image: "/Images/BackUpWebApp.png",
+      code: "https://github.com/marklaroya/SimpleBackupApp",
+      tech: ["React", "Node.js", "Multer", "Docker", "Ubuntu Server",],
+      status: "Completed",
+    },
   ]
 
   // Animation variants
