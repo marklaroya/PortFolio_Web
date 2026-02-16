@@ -102,7 +102,7 @@ export default function Portfolio() {
       status: "Completed",
     },
     {
-      title: "BackUp File App",
+      title: "BackUp File Web App",
       description:
         "Self-hosted backup web application deployed on My Ubuntu home server, enabling multiple file uploads and HTTP-based file access.",
       image: "/Images/BackUpWebApp.png",
