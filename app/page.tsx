@@ -25,6 +25,7 @@ import { motion, AnimatePresence } from "framer-motion"
 export default function Portfolio() {
   const [darkMode, setDarkMode] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [activeProjectFilter, setActiveProjectFilter] = useState("All")
 
   useEffect(() => {
     if (darkMode) {
@@ -44,23 +45,89 @@ export default function Portfolio() {
 
   const skills = {
     softwareDeveloper: [
-      { name: "HTML", level: "Experienced", color: "bg-emerald-500", percentage: 90 },
-      { name: "CSS", level: "Experienced", color: "bg-emerald-500", percentage: 85 },
-      { name: "Java", level: "Experienced", color: "bg-emerald-500", percentage: 80 },
-      { name: "C++", level: "Intermediate", color: "bg-amber-500", percentage: 70 },
-      { name: "Python", level: "Intermediate", color: "bg-amber-500", percentage: 65 },
-      { name: "JavaScript", level: "Basic", color: "bg-orange-500", percentage: 50 },
-      { name: "React", level: "Basic", color: "bg-orange-500", percentage: 45 },
+      { name: "HTML & CSS", color: "bg-emerald-500", percentage: 90 },
+      { name: "React", color: "bg-emerald-500", percentage: 80 },
+      { name: "JavaScript", color: "bg-emerald-500", percentage: 80 },
+      { name: "Express.js", color: "bg-amber-500", percentage: 70 },
+      { name: "Node.js", color: "bg-amber-500", percentage: 70 },
+      { name: "Next js", color: "bg-orange-500", percentage: 45 },
+      { name: "REST API", color: "bg-orange-500", percentage: 50 },
+      { name: "Python", color: "bg-orange-500", percentage: 45 },
+      { name: "MongoDB", color: "bg-orange-500", percentage: 45 },
+      { name: "Git & Github", color: "bg-orange-500", percentage: 45 },
     ],
     networkEngineer: [
-      { name: "Troubleshooting", level: "Experienced", color: "bg-emerald-500", percentage: 95 },
-      { name: "Network Configuration", level: "Experienced", color: "bg-emerald-500", percentage: 90 },
-      { name: "Documentation & Reporting", level: "Experienced", color: "bg-emerald-500", percentage: 85 },
-      { name: "Technical Support", level: "Experienced", color: "bg-emerald-500", percentage: 88 },
-      { name: "Performance Monitoring", level: "Experienced", color: "bg-emerald-500", percentage: 82 },
-      { name: "Routing Protocols", level: "Experienced", color: "bg-emerald-500", percentage: 87 },
+      { name: "Static/Dynamic Routing", color: "bg-emerald-500", percentage: 95 },
+      { name: "Inter-Vlan Routing", color: "bg-emerald-500", percentage: 90 },
+      { name: "VLAN Trunking", color: "bg-emerald-500", percentage: 87 },
+      { name: "TCP/IP", color: "bg-emerald-500", percentage: 85 },
+      { name: "DHCP",  color: "bg-emerald-500", percentage: 88 },
+      { name: "DNS", color: "bg-emerald-500", percentage: 82 },
+      { name: "BGP", color: "bg-emerald-500", percentage: 87 },
+      { name: "VLAN", color: "bg-emerald-500", percentage: 87 },
+      { name: "NAT", color: "bg-emerald-500", percentage: 87 },
+      { name: "ACL", color: "bg-emerald-500", percentage: 87 },
+      { name: "VRF", color: "bg-emerald-500", percentage: 87 },
+      { name: "OSPF", color: "bg-emerald-500", percentage: 87 },
     ],
   }
+
+  const experienceHighlights = [
+    {
+      value: "3+ Years",
+      label: "Network Engineer",
+      note: "Hands-on network configuration, support and incident troubleshooting.",
+    },
+    {
+      value: "Nationwide",
+      label: "Network Scope",
+      note: "Layer 3 support coverage across the Philippines.",
+    },
+    {
+      value: "5+ Projects",
+      label: "Web Builds",
+      note: "Personal and full-stack projects from frontend to deployment.",
+    },
+  ]
+
+  const workExperience = [
+    {
+      role: "Network Engineer",
+      company: "Integrated BigData Technologies Corp.",
+      period: "April 2022 - January 2026",
+      location: "Makati City, Philippines (Hybrid)",
+      achievements: [
+        "Managed Layer 3 routing and connectivity across multiple sites nationwide.",
+        "Configure and maintain routers, secure tunnels, and core network services.",
+        "Resolve network incidents with structured troubleshooting and clear reporting.",
+      ],
+      tech: ["Network Configuration,", "Performance Monitoring", "Technical Support", "Troubleshooting", "Documentation"],
+    },
+    {
+      role: "Full-Stack Developer",
+      company: "Personal Projects",
+      period: "",
+      achievements: [
+        "Build web apps using React, Node.js, and Express with API-driven architecture.",
+        "Implement authentication, CRUD workflows, and responsive user interfaces.",
+        "Deploy projects to cloud platforms and self-hosted infrastructure.",
+      ],
+      tech: ["React", "Node.js", "Express", "MongoDB", "Docker", "Vercel"],
+    },
+  ]
+
+  const skillGroups = [
+    {
+      title: "Development Stack",
+      color: "border-blue-200 dark:border-blue-800",
+      items: skills.softwareDeveloper,
+    },
+    {
+      title: "Network Engineer",
+      color: "border-emerald-200 dark:border-emerald-800",
+      items: skills.networkEngineer,
+    },
+  ]
 
   const projects = [
     {
@@ -72,6 +139,9 @@ export default function Portfolio() {
       code: "https://github.com/marklaroya/Laroya-js-2048-fcb", // Link to source code
       tech: ["JavaScript", "CSS3", "HTML5"],
       status: "Completed",
+      category: "Frontend",
+      featured: false,
+      impact: "Improved game-state handling and responsive behavior for smaller devices.",
     },
     {
       title: "UpFace",
@@ -82,6 +152,9 @@ export default function Portfolio() {
       code: "https://github.com/marklaroya/UpFace",
       tech: ["React", "TypeScript", "Firebase", "Vercel"],
       status: "Completed",
+      category: "Full-Stack",
+      featured: true,
+      impact: "Delivered real-time communication workflows with stable call and chat experience.",
     },
     {
       title: "Frontliners",
@@ -91,6 +164,9 @@ export default function Portfolio() {
       code: "https://github.com/marklaroya/COVID-19-Frontliner-Record-Management",
       tech: ["Java", "MySQL",],
       status: "Completed",
+      category: "Java",
+      featured: true,
+      impact: "Centralized health worker records to support faster data retrieval and updates.",
     },
     {
       title: "Simple Blog-App",
@@ -100,6 +176,9 @@ export default function Portfolio() {
       code: "https://github.com/marklaroya/FullStack-Blog-App",
       tech: ["React", "Node.js", "Express", "MongoDB",],
       status: "Completed",
+      category: "Full-Stack",
+      featured: true,
+      impact: "Implemented secure auth and CRUD flows across client and server layers.",
     },
     {
       title: "BackUp File Web App",
@@ -109,8 +188,23 @@ export default function Portfolio() {
       code: "https://github.com/marklaroya/SimpleBackupApp",
       tech: ["React", "Node.js", "Multer", "Docker", "Ubuntu Server",],
       status: "Completed",
+      category: "DevOps",
+      featured: false,
+      impact: "Reduced manual file transfer effort through centralized backup upload and retrieval.",
     },
   ]
+
+  const projectCategories = ["All", ...Array.from(new Set(projects.map((project) => project.category)))]
+
+  const filteredProjects =
+    activeProjectFilter === "All"
+      ? projects
+      : projects.filter((project) => project.category === activeProjectFilter)
+
+  const featuredProjects = filteredProjects.filter((project) => project.featured)
+  const standardProjects = filteredProjects.filter((project) => !project.featured)
+  const showFeaturedSection = activeProjectFilter === "All" && featuredProjects.length > 0
+  const projectsToDisplay = showFeaturedSection ? standardProjects : filteredProjects
 
   // Animation variants
   const fadeInUp = {
@@ -543,114 +637,124 @@ export default function Portfolio() {
             <div className="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-8">
-            {[
-              {
-                title: "Software Developer",
-                skills: skills.softwareDeveloper,
-                color: "border-blue-200 dark:border-blue-800",
-              },
-              {
-                title: "Network Support Engineer",
-                skills: skills.networkEngineer,
-                color: "border-emerald-200 dark:border-emerald-800",
-              },
-            ].map((category, categoryIndex) => (
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10"
+          >
+            {experienceHighlights.map((highlight, index) => (
               <motion.div
-                key={category.title}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ delay: categoryIndex * 0.2, duration: 0.6 }}
+                key={highlight.label}
+                variants={{
+                  initial: { opacity: 0, y: 30 },
+                  animate: { opacity: 1, y: 0 },
+                }}
+                transition={{ delay: index * 0.08, duration: 0.5 }}
               >
-                <motion.div whileHover={{ scale: 1.02, y: -5 }} transition={{ duration: 0.3 }}>
-                  <Card
-                    className={`p-8 hover:shadow-xl transition-all duration-300 border-2 ${category.color} bg-white dark:bg-gray-900`}
-                  >
-                    <CardContent className="p-0">
-                      <motion.h3
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.3 + categoryIndex * 0.2, duration: 0.6 }}
-                        className="text-2xl font-bold text-gray-900 dark:text-white text-center mb-8"
-                      >
-                        {category.title}
-                      </motion.h3>
-                      <motion.div
-                        variants={staggerContainer}
-                        initial="initial"
-                        whileInView="animate"
-                        viewport={{ once: true, margin: "-100px" }}
-                        className="space-y-6"
-                      >
-                        {category.skills.map((skill, index) => (
-                          <motion.div
-                            key={index}
-                            variants={{
-                              initial: { opacity: 0, x: -30 },
-                              animate: { opacity: 1, x: 0 },
-                            }}
-                            whileHover={{ x: 5, scale: 1.02 }}
-                            transition={{ duration: 0.2 }}
-                            className="space-y-2"
-                          >
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center gap-3">
-                                <motion.div
-                                  initial={{ scale: 0 }}
-                                  whileInView={{ scale: 1 }}
-                                  viewport={{ once: true }}
-                                  transition={{
-                                    delay: 0.5 + categoryIndex * 0.2 + index * 0.05,
-                                    duration: 0.3,
-                                    type: "spring",
-                                  }}
-                                  className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center text-white font-bold shadow-md"
-                                >
-                                  {skill.name.charAt(0)}
-                                </motion.div>
-                                <div>
-                                  <span className="font-semibold text-gray-900 dark:text-white text-lg">
-                                    {skill.name}
-                                  </span>
-                                  <p className="text-gray-600 dark:text-gray-400 text-sm">
-                                    {skill.percentage}% proficiency
-                                  </p>
-                                </div>
-                              </div>
-                              <motion.div
-                                initial={{ scale: 0, opacity: 0 }}
-                                whileInView={{ scale: 1, opacity: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.6 + categoryIndex * 0.2 + index * 0.05, duration: 0.3 }}
-                                whileHover={{ scale: 1.1 }}
-                              >
-                                <Badge
-                                  className={`${skill.color} text-white hover:${skill.color} font-medium px-3 py-1`}
-                                >
-                                  {skill.level}
-                                </Badge>
-                              </motion.div>
-                            </div>
-                            {/* Progress bar */}
-                            <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                              <motion.div
-                                initial={{ width: 0 }}
-                                whileInView={{ width: `${skill.percentage}%` }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.7 + categoryIndex * 0.2 + index * 0.05, duration: 0.8 }}
-                                className={`h-2 rounded-full ${skill.color}`}
-                              />
-                            </div>
-                          </motion.div>
-                        ))}
-                      </motion.div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
+                <Card className="h-full border-2 border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-900">
+                  <CardContent className="p-6 text-center">
+                    <p className="text-3xl font-bold text-blue-600 dark:text-blue-400">{highlight.value}</p>
+                    <p className="mt-2 font-semibold text-gray-900 dark:text-white">{highlight.label}</p>
+                    <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{highlight.note}</p>
+                  </CardContent>
+                </Card>
               </motion.div>
             ))}
+          </motion.div>
+
+          <div className="grid lg:grid-cols-5 gap-8">
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6 }}
+              className="lg:col-span-3"
+            >
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Professional Experience</h3>
+              <div className="space-y-6">
+                {workExperience.map((experience, index) => (
+                  <motion.div
+                    key={`${experience.role}-${index}`}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ delay: index * 0.12, duration: 0.5 }}
+                    className="relative pl-8"
+                  >
+                    <span className="absolute left-0 top-2 h-3 w-3 rounded-full bg-blue-600"></span>
+                    {index < workExperience.length - 1 && (
+                      <span className="absolute left-[5px] top-6 h-[calc(100%+1.25rem)] w-[2px] bg-blue-200 dark:bg-blue-900"></span>
+                    )}
+                    <Card className="border-2 border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-900">
+                      <CardContent className="p-6">
+                        <div className="flex flex-wrap items-center gap-3">
+                          <h4 className="text-xl font-bold text-gray-900 dark:text-white">{experience.role}</h4>
+                          <Badge variant="secondary" className="font-medium">
+                            {experience.period}
+                          </Badge>
+                        </div>
+                        <p className="mt-2 font-medium text-gray-700 dark:text-gray-300">{experience.company}</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">{experience.location}</p>
+                        <div className="mt-4 space-y-2">
+                          {experience.achievements.map((item) => (
+                            <div key={item} className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300">
+                              <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-blue-500"></span>
+                              <span>{item}</span>
+                            </div>
+                          ))}
+                        </div>
+                        <div className="mt-4 flex flex-wrap gap-2">
+                          {experience.tech.map((tech) => (
+                            <Badge key={tech} variant="outline" className="font-medium">
+                              {tech}
+                            </Badge>
+                          ))}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6 }}
+              className="lg:col-span-2"
+            >
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Skills Snapshot</h3>
+              <div className="space-y-4">
+                {skillGroups.map((group, groupIndex) => (
+                  <motion.div
+                    key={group.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ delay: groupIndex * 0.1, duration: 0.5 }}
+                  >
+                    <Card className={`border-2 ${group.color} bg-white dark:bg-gray-900`}>
+                      <CardContent className="p-6">
+                        <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">{group.title}</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {group.items.map((skill, skillIndex) => (
+                            <Badge key={`${group.title}-${skill.name}-${skillIndex}`} variant="secondary">
+                              {skill.name}
+                              <span className="ml-2 text-[10px] uppercase tracking-wide text-gray-500 dark:text-gray-300">
+                               {/* {skill.percentage >= 85 ? "Advanced" : skill.percentage >= 65 ? "Intermediate" : "Basic"} */}
+                              </span>
+                            </Badge>
+                          ))}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -671,108 +775,187 @@ export default function Portfolio() {
           </motion.div>
 
           <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            transition={{ duration: 0.5 }}
+            className="flex flex-wrap justify-center gap-2 mb-10"
           >
-            {projects.map((project, index) => (
-              <motion.div
-                key={index}
-                variants={{
-                  initial: { opacity: 0, y: 50 },
-                  animate: { opacity: 1, y: 0 },
-                }}
-                whileHover={{ y: -10, scale: 1.02 }}
-                transition={{ duration: 0.3 }}
+            {projectCategories.map((category) => (
+              <Button
+                key={category}
+                type="button"
+                size="sm"
+                variant={activeProjectFilter === category ? "default" : "outline"}
+                onClick={() => setActiveProjectFilter(category)}
+                className="rounded-full"
               >
-                <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 border-2 border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800">
+                {category}
+              </Button>
+            ))}
+          </motion.div>
+
+          {showFeaturedSection && (
+            <div className="mb-12">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Featured Projects</h3>
+              <motion.div
+                key={`featured-${activeProjectFilter}`}
+                className="grid md:grid-cols-2 gap-8"
+              >
+                {featuredProjects.map((project, index) => (
                   <motion.div
-                    className="aspect-video relative bg-gray-100 dark:bg-gray-700 overflow-hidden"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.3 }}
+                    key={`featured-${project.title}`}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    whileHover={{ y: -10, scale: 1.01 }}
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
                   >
-                    <Image
-                      src={project.image || "/placeholder.svg"}
-                      alt={project.title}
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute top-3 right-3">
-                      <Badge
-                        className={`${project.status === "Completed" ? "bg-emerald-500" : "bg-amber-500"} text-white font-medium`}
+                    <Card className="h-full overflow-hidden hover:shadow-xl transition-all duration-300 border-2 border-blue-100 dark:border-blue-900 bg-white dark:bg-gray-800 flex flex-col">
+                      <motion.div
+                        className="aspect-video relative bg-gray-100 dark:bg-gray-700 overflow-hidden"
+                        whileHover={{ scale: 1.03 }}
+                        transition={{ duration: 0.3 }}
                       >
-                        {project.status}
-                      </Badge>
-                    </div>
-                  </motion.div>
-                  <CardContent className="p-6 space-y-4">
-                    <motion.h3
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.2 + index * 0.1, duration: 0.6 }}
-                      className="text-xl font-bold text-gray-900 dark:text-white"
-                    >
-                      {project.title}
-                    </motion.h3>
-                    <motion.p
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.3 + index * 0.1, duration: 0.6 }}
-                      className="text-gray-600 dark:text-gray-400 leading-relaxed"
-                    >
-                      {project.description}
-                    </motion.p>
-
-                    {/* Tech stack */}
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.4 + index * 0.1, duration: 0.6 }}
-                      className="flex flex-wrap gap-2"
-                    >
-                      {project.tech.map((tech, techIndex) => (
-                        <Badge key={techIndex} variant="secondary" className="text-xs font-medium">
-                          {tech}
-                        </Badge>
-                      ))}
-                    </motion.div>
-
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.5 + index * 0.1, duration: 0.6 }}
-                      className="flex gap-3 pt-2"
-                    >
-                      {project.preview && (
-                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                        <Image src={project.image || "/placeholder.svg"} alt={project.title} fill className="object-cover" />
+                        <div className="absolute top-3 left-3">
+                          <Badge className="bg-blue-600 text-white font-medium">Featured</Badge>
+                        </div>
+                        <div className="absolute top-3 right-3">
+                          <Badge
+                            className={`${project.status === "Completed" ? "bg-emerald-500" : "bg-amber-500"} text-white font-medium`}
+                          >
+                            {project.status}
+                          </Badge>
+                        </div>
+                      </motion.div>
+                      <CardContent className="p-6 space-y-4 flex-1 flex flex-col">
+                        <h3 className="text-xl font-bold text-gray-900 dark:text-white min-h-[3.5rem] [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical] overflow-hidden">
+                          {project.title}
+                        </h3>
+                        <p className="text-gray-600 dark:text-gray-400 leading-relaxed min-h-[4.5rem] [display:-webkit-box] [-webkit-line-clamp:3] [-webkit-box-orient:vertical] overflow-hidden">
+                          {project.description}
+                        </p>
+                        <p className="text-sm font-medium text-blue-700 dark:text-blue-300 [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical] overflow-hidden">
+                          Impact: {project.impact}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {project.tech.slice(0, 4).map((tech, techIndex) => (
+                            <Badge key={`${project.title}-${tech}-${techIndex}`} variant="secondary" className="text-xs font-medium">
+                              {tech}
+                            </Badge>
+                          ))}
+                          {project.tech.length > 4 && (
+                            <Badge variant="secondary" className="text-xs font-medium">
+                              +{project.tech.length - 4}
+                            </Badge>
+                          )}
+                        </div>
+                        <div className="flex gap-3 pt-2 mt-auto">
+                          {project.preview && (
+                            <Button variant="outline" size="sm" asChild className="font-medium">
+                              <Link href={project.preview} target="_blank" rel="noopener noreferrer">
+                                <ExternalLink className="w-4 h-4 mr-2" />
+                                Preview
+                              </Link>
+                            </Button>
+                          )}
                           <Button variant="outline" size="sm" asChild className="font-medium">
-                            <Link href={project.preview}>
+                            <Link href={project.code} target="_blank" rel="noopener noreferrer">
+                              <Github className="w-4 h-4 mr-2" />
+                              Code
+                            </Link>
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          )}
+
+          <div>
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+              {showFeaturedSection ? "More Projects" : "Projects"}
+            </h3>
+            <motion.div
+              key={`projects-${activeProjectFilter}`}
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
+              {projectsToDisplay.map((project, index) => (
+                <motion.div
+                  key={project.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  whileHover={{ y: -10, scale: 1.02 }}
+                  transition={{ duration: 0.3, delay: index * 0.04 }}
+                >
+                  <Card className="h-full overflow-hidden hover:shadow-xl transition-all duration-300 border-2 border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 flex flex-col">
+                    <motion.div
+                      className="aspect-video relative bg-gray-100 dark:bg-gray-700 overflow-hidden"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <Image src={project.image || "/placeholder.svg"} alt={project.title} fill className="object-cover" />
+                      <div className="absolute top-3 right-3">
+                        <Badge
+                          className={`${project.status === "Completed" ? "bg-emerald-500" : "bg-amber-500"} text-white font-medium`}
+                        >
+                          {project.status}
+                        </Badge>
+                      </div>
+                    </motion.div>
+                    <CardContent className="p-6 space-y-4 flex-1 flex flex-col">
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-white min-h-[3.5rem] [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical] overflow-hidden">
+                        {project.title}
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-400 leading-relaxed min-h-[4.5rem] [display:-webkit-box] [-webkit-line-clamp:3] [-webkit-box-orient:vertical] overflow-hidden">
+                        {project.description}
+                      </p>
+                      <p className="text-sm font-medium text-blue-700 dark:text-blue-300 [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical] overflow-hidden">
+                        Impact: {project.impact}
+                      </p>
+
+                      <div className="flex flex-wrap gap-2">
+                        {project.tech.slice(0, 4).map((tech, techIndex) => (
+                          <Badge key={`${project.title}-${tech}-${techIndex}`} variant="secondary" className="text-xs font-medium">
+                            {tech}
+                          </Badge>
+                        ))}
+                        {project.tech.length > 4 && (
+                          <Badge variant="secondary" className="text-xs font-medium">
+                            +{project.tech.length - 4}
+                          </Badge>
+                        )}
+                      </div>
+
+                      <div className="flex gap-3 pt-2 mt-auto">
+                        {project.preview && (
+                          <Button variant="outline" size="sm" asChild className="font-medium">
+                            <Link href={project.preview} target="_blank" rel="noopener noreferrer">
                               <ExternalLink className="w-4 h-4 mr-2" />
                               Preview
                             </Link>
                           </Button>
-                        </motion.div>
-                      )}
-                      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                        )}
                         <Button variant="outline" size="sm" asChild className="font-medium">
-                          <Link href={project.code}>
+                          <Link href={project.code} target="_blank" rel="noopener noreferrer">
                             <Github className="w-4 h-4 mr-2" />
                             Code
                           </Link>
                         </Button>
-                      </motion.div>
-                    </motion.div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </motion.div>
+            {projectsToDisplay.length === 0 && (
+              <p className="text-center text-gray-500 dark:text-gray-400 mt-8">
+                No projects found in this category yet.
+              </p>
+            )}
+          </div>
         </div>
       </section>
 
