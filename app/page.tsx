@@ -184,7 +184,7 @@ export default function Portfolio() {
       title: "BackUp File Web App",
       description:
         "Self-hosted backup web application deployed on My Ubuntu home server, enabling multiple file uploads and HTTP-based file access.",
-      image: "/Images/BackUpWebApp.png",
+      image: "/Images/BackUpWebapp.png",
       code: "https://github.com/marklaroya/SimpleBackupApp",
       tech: ["React", "Node.js", "Multer", "Docker", "Ubuntu Server",],
       status: "Completed",
@@ -451,7 +451,7 @@ export default function Portfolio() {
               >
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
 
-                  <Button onClick={() => window.open("./assets/MarkLester_Laroya_Resume.pdf", "_blank")} size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-8">
+                  <Button onClick={() => window.open("./assets/MarkLester_Laroya_Resume_WebDev.pdf", "_blank")} size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-8">
                     <Download className="w-5 h-5 mr-2" />
                     Download CV
                   </Button>
